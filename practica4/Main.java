@@ -22,9 +22,9 @@ public class Main {
 		for(int i = 1; i != values.length; i++) {
 			for(int j = 0; j!= values.length; j++) {
 				if(j < i && values[j] > values[i]) {
-					temp = values[j];
+					temp = values[i];
 					shiftRight(values, j, i);
-					values[i] = temp;
+					values[j] = temp;
 				}
 			}
 			
@@ -53,13 +53,38 @@ public class Main {
 		}
 	}
 	
+	public static void bubbleSort(int values[]){
+		boolean notSorted = true;
+		int temp;
+		while (notSorted) {
+			notSorted = false;
+			
+			for(int i = 1; i < values.length; i++) {
+				if(values[i] < values[i-1]) {
+					temp = values[i];
+					values[i] = values[i-1];
+					values[i-1] = temp;
+					
+					notSorted = true;
+				}
+			}
+		}
+
+	}
+	
 	public static void main(String[] args) {
 		
 		int[] values = {5,2,7,43,9,23,6,86,4,1};
 		int[] values2 = {5,2,7,43,9,23,6,86,4,1};
+		int[] values3 = {5,2,7,43,9,23,6,86,4,1};
+		
 		insertionSort(values);
 		selectionSort(values2);
+		bubbleSort(values3);
+		
 		System.out.println(Arrays.toString(values));
+		System.out.println(Arrays.toString(values2));
+		System.out.println(Arrays.toString(values3));
 		
 
 		}
